@@ -4,9 +4,8 @@
 int main(void)
 {
     int i;
-    i = ft_printf("  %s\n","hello");
+    i = ft_printf("%p\n",&i);
     ft_printf("%i\n",i);
-    i = printf("  %s\n","hello");
+    i = printf("%p\n",&i);
     ft_printf("%i\n",i);
-
 }

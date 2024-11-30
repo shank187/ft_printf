@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:39:46 by aelbour           #+#    #+#             */
-/*   Updated: 2024/11/30 18:33:22 by aelbour          ###   ########.fr       */
+/*   Updated: 2024/11/30 21:09:01 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,12 @@ void	ft_put_hexa(size_t i, int upr, int mem, int *p)
 		if(!i)
 			break;
 	}
-	*p += ((int)j + 2);
+	*p += (int)j - 1;
 	if(mem)
-		write(1, "0x", 2);
-	while(j > 0)
 	{
-		--j;
-		write(1,&s[j], 1);
+		write(1, "0x", 2);
+		(*p) += 2;
 	}
+	while(j > 0)
+		write(1,&s[--j], 1);
 }
