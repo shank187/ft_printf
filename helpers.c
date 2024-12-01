@@ -6,16 +6,11 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:39:46 by aelbour           #+#    #+#             */
-/*   Updated: 2024/11/30 21:09:01 by aelbour          ###   ########.fr       */
+/*   Updated: 2024/12/01 16:07:41 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	ft_putchar(int c)
-{
-	write(1, &c, 1);
-}
 
 size_t	ft_strlen(const char *s)
 {
@@ -54,6 +49,7 @@ void	ft_putnbr(int n, int *j)
 	{
 		write(1, "-", 1);
 		n = -n;
+		(*j)++;
 	}
 	if (n >= 10)
 	{
@@ -80,27 +76,27 @@ void	ft_put_unsigned(unsigned int n, int *j)
 void	ft_put_hexa(size_t i, int upr, int mem, int *p)
 {
 	size_t	j;
-	char s[20];
+	char	s[20];
 
 	j = 0;
-	if(!mem)
+	if (!mem)
 		i = (unsigned int)i;
-	while(1)
+	while (1)
 	{
 		if (upr && !mem)
 			s[j++] = "0123456789ABCDEF"[i % 16];
 		else
 			s[j++] = "0123456789abcdef"[i % 16];
-		i/=16;
-		if(!i)
-			break;
+		i /= 16;
+		if (!i)
+			break ;
 	}
 	*p += (int)j - 1;
-	if(mem)
+	if (mem)
 	{
 		write(1, "0x", 2);
 		(*p) += 2;
 	}
-	while(j > 0)
-		write(1,&s[--j], 1);
+	while (j > 0)
+		write(1, &s[--j], 1);
 }
