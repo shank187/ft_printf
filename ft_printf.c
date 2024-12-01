@@ -6,7 +6,7 @@
 /*   By: aelbour <aelbour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 22:21:54 by aelbour           #+#    #+#             */
-/*   Updated: 2024/12/01 16:10:44 by aelbour          ###   ########.fr       */
+/*   Updated: 2024/12/01 21:55:08 by aelbour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	ft_printf(const char *s, ...)
 	size_t	i;
 	int		j;
 
+	if (write(1, 0, 0) < 0)
+		return (-1);
 	va_start(args, s);
 	i = 0;
 	j = 0;
